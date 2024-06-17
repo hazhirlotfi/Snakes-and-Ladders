@@ -31,17 +31,26 @@ print('\n')
 player1 = 0
 player2 = 0
 
-while player1 <= 42 or player2 <= 42:
+while True:
     input("p1, press enter: ")
-    print(f"player1's place is {player1}")
-    player1 += dice()
-    input('p2 press enter: ')
-    print(f"player2's place is {player2}")
-    player2 += dice()
+    print(f'player1 rolled a {dice()}')
 
-if player1 == 42:
-    print('player on3 won')
+    if player1 + dice() <= 42:
+        player1 += dice()
+    print(f'player1\'s place is {player1}')
 
-elif player2 == 42:
-    print('player two won')
+    if player1 == 42:
+        print('player1 won')
+        break
 
+
+    input("p2, press enter: ")
+    print(f'player2 rolled a {dice()}')
+
+    if player2 + dice() <= 42:
+        player2 += dice()
+    print(f'player2\'s place is {player2}')
+
+    if player2 == 42:
+        print('player2 won')
+        break
