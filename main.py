@@ -32,24 +32,32 @@ player1 = 0
 player2 = 0
 
 while True:
-    input("p1, press enter: ")
-    print(f'player1 rolled a {dice()}')
 
-    if player1 + dice() <= 42:
-        player1 += dice()
-    print(f'player1\'s place is {player1}')
+    p1roll = dice()
+    input("p1, press enter: ")
+    print(f'player1 rolled a {p1roll}')
+
+    if player1 < 42:
+        player1 += p1roll
+        if player1 > 42:
+            print('more than 42 :(\n')
+            player1 -= p1roll
+    print(f'player1\'s place is {player1}\n')
 
     if player1 == 42:
         print('player1 won')
         break
 
-
+    p2roll = dice()
     input("p2, press enter: ")
-    print(f'player2 rolled a {dice()}')
+    print(f'player2 rolled a {p2roll}')
 
-    if player2 + dice() <= 42:
-        player2 += dice()
-    print(f'player2\'s place is {player2}')
+    if player2 < 42:
+        player2 += p2roll
+        if player2 > 42:
+            print('more than 42 :(\n')
+            player2 -= p2roll
+    print(f'player2\'s place is {player2}\n')
 
     if player2 == 42:
         print('player2 won')
