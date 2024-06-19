@@ -52,6 +52,7 @@ while True:
         if player1 > 42:
             print('more than 42 :(\n')
             player1 -= p1roll
+<<<<<<< HEAD
 
         if player1 in snakes.keys():
             player1 -= snakes[player1]
@@ -71,6 +72,14 @@ while True:
         print('player1 won')
         break
 
+=======
+    print(f'player1\'s place is {player1}\n')
+
+    if player1 == 42:
+        print('player1 won')
+        break
+
+>>>>>>> 2d78b6d46ac7ee7ffb2975aed1d6895bb8f1db2d
     p2roll = dice()
     input("p2, press enter: ")
     print(f'player2 rolled a {p2roll}')
@@ -80,6 +89,7 @@ while True:
         if player2 > 42:
             print('more than 42 :(\n')
             player2 -= p2roll
+<<<<<<< HEAD
 
         if player2 in snakes.keys():
             player2 -= snakes[player2]
@@ -93,6 +103,8 @@ while True:
             print(f"Your place is {player2}")
             continue
 
+=======
+>>>>>>> 2d78b6d46ac7ee7ffb2975aed1d6895bb8f1db2d
     print(f'player2\'s place is {player2}\n')
 
     if player2 == 42:
