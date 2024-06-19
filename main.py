@@ -2,8 +2,6 @@ import random as rnd
 
 naghshe = []
 
-
-
 def dice():
     return rnd.randint(1,6)
 
@@ -28,20 +26,75 @@ for i in range(len(naghshe)):
 print('\n')
 "'till here"
 
+snakes = {
+    38:17, 
+    28:26,
+    16:12
+}
+
+ladders = {
+    3:11,
+    13:13,
+    19:13
+}
+
 player1 = 0
 player2 = 0
 
-while player1 <= 42 or player2 <= 42:
+while True:
+
+    p1roll = dice()
     input("p1, press enter: ")
-    print(f"player1's place is {player1}")
-    player1 += dice()
-    input('p2 press enter: ')
-    print(f"player2's place is {player2}")
-    player2 += dice()
+    print(f'player1 rolled a {p1roll}')
 
-if player1 == 42:
-    print('player on3 won')
+    if player1 < 42:
+        player1 += p1roll
+        if player1 > 42:
+            print('more than 42 :(\n')
+            player1 -= p1roll
 
-elif player2 == 42:
-    print('player two won')
+        if player1 in snakes.keys():
+            player1 -= snakes[player1]
+            print("You got eaten by a SNAKE!")
+            print(f"Your place is {player1}")
+            continue
 
+        if player1 in ladders.keys():
+            player1 += ladders[player1]
+            print("You climbed a ladder! YAY.")
+            print(f"Your place is {player1}")
+            continue
+
+    print(f'player1\'s place is {player1}\n')
+
+    if player1 == 42:
+        print('player1 won')
+        break
+
+    p2roll = dice()
+    input("p2, press enter: ")
+    print(f'player2 rolled a {p2roll}')
+
+    if player2 < 42:
+        player2 += p2roll
+        if player2 > 42:
+            print('more than 42 :(\n')
+            player2 -= p2roll
+
+        if player2 in snakes.keys():
+            player2 -= snakes[player2]
+            print("You got eaten by a SNAKE!")
+            print(f"Your place is {player2}")
+            continue
+
+        if player2 in ladders.keys():
+            player2 += ladders[player2]
+            print("You climbed a ladder! YAY.")
+            print(f"Your place is {player2}")
+            continue
+
+    print(f'player2\'s place is {player2}\n')
+
+    if player2 == 42:
+        print('player2 won')
+        break
