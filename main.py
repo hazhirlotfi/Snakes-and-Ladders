@@ -2,10 +2,14 @@ import random as rnd
 
 naghshe = []
 
+player1 = 0
+player2 = 0
+
 def dice():
     return rnd.randint(1,6)
 
 def snl_map(player):
+    naghshe.clear()
     for cells in range(42):
         #snakes head
         if cells in (16,28,38):
@@ -20,18 +24,18 @@ def snl_map(player):
         elif cells in (14, 26, 32):
             naghshe.append('[%]')
         #player's place
-        elif cells == 1:
-            cells += player
-            naghshe.append('[D]') 
+        elif cells == player1:
+            naghshe.append('[p1]') 
+        elif cells == player2:
+            naghshe.append('[p2]')
         else:
             naghshe.append('[-]')
 
-    for i in range(42):
-        if i % 6 == 0:
+    for i in range(41,-1,-1):
+        if (i + 1) % 7 == 0:
             print('\n')
         print(naghshe[i], end = "   ")
     print("\n")
-    print(naghshe)
 
 
 def snakeNladders(player):
@@ -55,10 +59,6 @@ def snakeNladders(player):
 
     return player
 
-player1 = 0
-player2 = 0
-
-#game logic: 
 while True:
 
     player1_roll = dice()
