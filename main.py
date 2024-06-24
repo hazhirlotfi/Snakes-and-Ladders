@@ -10,9 +10,14 @@ def dice():
 
 def snl_map(player):
     naghshe.clear()
-    for cells in range(42):
+    for cells in range(0,44):
+        #player's place
+        if cells == player1:
+            naghshe.append('[p1]')            
+        elif cells == player2:
+            naghshe.append('[p2]')
         #snakes head
-        if cells in (16,28,38):
+        elif cells in (16,28,38):
             naghshe.append('[$]')
         #snakes tail
         elif cells in (2,4,21):
@@ -23,11 +28,6 @@ def snl_map(player):
         #ladders top
         elif cells in (14, 26, 32):
             naghshe.append('[%]')
-        #player's place
-        elif cells == player1:
-            naghshe.append('[p1]') 
-        elif cells == player2:
-            naghshe.append('[p2]')
         else:
             naghshe.append('[-]')
 
