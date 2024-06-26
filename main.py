@@ -2,15 +2,15 @@ import random as rnd
 
 naghshe = []
 
-player1 = 0
-player2 = 0
+player1 = 1
+player2 = 1
 
 def dice():
     return rnd.randint(1,6)
 
 def snl_map(player):
     naghshe.clear()
-    for cells in range(0,44):
+    for cells in range(1,44):
         #player's place
         if cells == player1:
             naghshe.append('[p1]')            
@@ -58,6 +58,8 @@ def snakeNladders(player):
         player += ladders[player]
 
     return player
+
+snl_map(player="")
 
 while True:
 
