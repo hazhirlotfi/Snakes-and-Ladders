@@ -22,7 +22,7 @@ def snl_map(player):
         #snakes tail
         elif cells in (2,4,21):
             naghshe.append('[?]')
-        #ladders botton
+        #ladders bottom
         elif cells in (3, 13, 19):
             naghshe.append('[#]')    
         #ladders top
@@ -36,6 +36,7 @@ def snl_map(player):
             print('\n')
         print(naghshe[i], end = "   ")
     print("\n")
+    print("---" * 13)
 
 
 def snakeNladders(player):
@@ -46,7 +47,7 @@ def snakeNladders(player):
     }
     if player in snakes.keys():
         player -= snakes[player]
-        print("You got eaten by a SNAKE!")
+        print("\tYou got eaten by a SNAKE!")
 
     ladders = {
         3:11,
@@ -54,49 +55,68 @@ def snakeNladders(player):
         19:13
     }
     if player in ladders.keys():
-        print("You climbed a ladder! YAY.")
+        print("\tYou climbed a ladder!")
         player += ladders[player]
 
     return player
+
+print("""
+┬ ┬┌─┐┬  ┌─┐┌─┐┌┬┐┌─┐  ┌┬┐┌─┐                       
+│││├┤ │  │  │ ││││├┤    │ │ │                       
+└┴┘└─┘┴─┘└─┘└─┘┴ ┴└─┘   ┴ └─┘                       
+╔═╗┌┐┌┌─┐┬┌─┌─┐┌─┐  ┌─┐┌┐┌┌┬┐  ╦  ┌─┐┌┬┐┌┬┐┌─┐┬─┐┌─┐
+╚═╗│││├─┤├┴┐├┤ └─┐  ├─┤│││ ││  ║  ├─┤ ││ ││├┤ ├┬┘└─┐
+╚═╝┘└┘┴ ┴┴ ┴└─┘└─┘  ┴ ┴┘└┘─┴┘  ╩═╝┴ ┴─┴┘─┴┘└─┘┴└─└─┘
+""")
+
+input("    Press enter to start the Game:")
+print("\n")
+print("\tHere is the Board: ")
 
 snl_map(player="")
 
 while True:
 
     player1_roll = dice()
-    input("p1, press enter: ")
-    print(f'player1 rolled a {player1_roll}')
+    input("\tPlayer 1, Press enter: ")
+    print("\n")
+    print(" " * 13, "Result: ")
+    print(f'\tPlayer 1 rolled a {player1_roll}')
 
     if player1 < 42:
         player1 += player1_roll
         if player1 > 42:
-            print('more than 42 :(\n')
+            print('\tMore than 42.\n')
             player1 -= player1_roll
     
     player1 = snakeNladders(player1)
-    print(f'player1\'s place is {player1}\n')
+    print(f'\tPlayer 1\'s place is {player1}\n\
+    Here is your place on the board: \n')
 
     snl_map(player1)
 
     if player1 == 42:
-        print('player1 won')
+        print(" " * 13,'Player 1 Won!')
         break
 
     player2_roll = dice()
-    input("p2, press enter: ")
-    print(f'player2 rolled a {player2_roll}')
+    input("\tPlayer 2, Press enter: ")
+    print("\n")
+    print(" " * 13, "Result: ")
+    print(f'\tPlayer 2 rolled a {player2_roll}')
 
     if player2 < 42:
         player2 += player2_roll
         if player2 > 42:
-            print('more than 42 :(\n')
+            print('\tMore than 42.\n')
             player2 -= player2_roll
 
     player2 = snakeNladders(player2)
-    print(f'player2\'s place is {player2}\n')
+    print(f'\tPlayer 2\'s place is {player2}\n\
+    Here is your place on the board: \n')
 
     snl_map(player2)
 
     if player2 == 42:
-        print('player2 won')
+        print(" " * 13,'Player 2 Won!')
         break
